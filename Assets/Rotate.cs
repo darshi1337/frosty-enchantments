@@ -8,8 +8,6 @@ public class Rotate : MonoBehaviour
     private Quaternion originalRotation;
     private Quaternion targetRotation;
 
-    private AudioSource audioSource;
-
     void Start()
     {
         originalRotation = transform.rotation;
@@ -22,16 +20,6 @@ public class Rotate : MonoBehaviour
         {
             isRotating = !isRotating;
             targetRotation = isRotating ? Quaternion.Euler(90, 0, 0) : originalRotation;
-            if (audioSource == null)
-            {
-                audioSource = GetComponent<AudioSource>();
-                audioSource.Play();
-
-            }
-            else
-            {
-                audioSource.Play();
-            }
         }
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
     }
